@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+    <div class="outline p-4 mt-2">
+        <h3>{{object.title}}</h3>
+        <p>{{ object.content }}</p>
+        <p>By {{object.author}}</p>
+        <p>On {{object.date_posted|date:"F d, Y"}}</p>
+        {% if object.author == user %}
+            <a href="{% url 'post-update' object.id %}" class="btn btn-small btn-outline-info">Update</a>
+            <a href="{% url 'post-delete' object.id %}" class="btn btn-small btn-outline-danger">Delete</a>
+        {% endif %}
+    </div>
+{% endblock %}

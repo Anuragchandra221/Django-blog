@@ -1,0 +1,12 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<h1 class="mb-3">Home Page</h1>
+    {% for post in posts %}
+    <div class="outline p-4 mt-2">
+        <h3> <a href="{% url 'post-detail' post.id %}">{{post.title}}</a> </h3>
+        <p>{{ post.content }}</p>
+        <p>By {{post.author}}</p>
+        <p>On {{post.date_posted|date:"F d, Y"}}</p>
+    </div>
+    {% endfor %}
+{% endblock %}
